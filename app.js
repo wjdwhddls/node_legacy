@@ -76,9 +76,23 @@ app.post('/api/contact', (req, res) => {
       res.send("<script>alert('문의사항이 등록되었습니다.'); location.href='/'</script>")
     }
   })
-});
+})
 
+app.get('/contactList', (req, res) => {
+  const selectQuery = `SELEECT * FROM contact ORDER BY ID DESC`;
+
+  connectionPool.query(SQL_Query, (err, result) => {
+    if(err) {
+      console.error('데이터 조회 중 에러 발생: ', err);
+      res.status(500).send
+    } else{
+      console.log('데이터가 조회되었습니다.');
+      console.log(result)
+      res.render('contactList', {lists: result})
+    }
+  })
+})
 // 서버 시작
 app.listen(port, () => {
   console.log(`Node Legacy App listening on port ${port}`);
-});
+})
