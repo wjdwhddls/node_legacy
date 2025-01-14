@@ -79,7 +79,7 @@ app.post('/api/contact', (req, res) => {
 })
 
 app.get('/contactList', (req, res) => {
-  const selectQuery = `SELEECT * FROM contact ORDER BY ID DESC`;
+  const selectQuery = `SELECT * FROM contact ORDER BY ID DESC`;
 
   connectionPool.query(SQL_Query, (err, result) => {
     if(err) {
