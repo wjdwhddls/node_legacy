@@ -2,6 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+require('dotenv').config();
 const app = express();
 const port = 3000;
 
@@ -15,6 +16,18 @@ app.use(express.static(__dirname + '/public'));
 // body-parser 미들웨어 설정
 app.use(bodyParser.urlencoded({ extended: false })); // URL-encoded 데이터
 app.use(bodyParser.json()); // JSON 데이터 파싱
+
+
+// MySQL Connection
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PW,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  insecureAuth: true,
+});
+
 
 // GET 요청 라우터
 app.get('/', (req, res) => {
