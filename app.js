@@ -81,7 +81,7 @@ app.post('/api/contact', (req, res) => {
 app.get('/contactList', (req, res) => {
   const selectQuery = `SELECT * FROM contact ORDER BY ID DESC`;
 
-  connectionPool.query(SQL_Query, (err, result) => {
+  connectionPool.query(selectQuery, (err, result) => {
     if(err) {
       console.error('데이터 조회 중 에러 발생: ', err);
       res.status(500).send
