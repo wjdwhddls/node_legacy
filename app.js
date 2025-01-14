@@ -31,6 +31,10 @@ app.get('/users',  (req, res) => {    //  => , function(req,res) 같은 표기�
 
 })
 
+app.get('/contact', (req,res) => {
+  res.render('contact')
+})
+
 app.listen(port, () => {
   console.log(`Node Legacy App listening on port ${port}`)
 })
