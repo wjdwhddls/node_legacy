@@ -1,16 +1,36 @@
-<%-include('layouts/header.ejs')%>
+<div class="contact-container">  
+    <div class="contact-content">  
+        <div class="contact-left">  
+            <h1>Let's Work<br>Together</h1>  
+            <div class="contact-illustration">  
+                <img src="/7.jpg" alt="Contact Illustration">  
+            </div>  
+        </div>  
+        
+        <div class="contact-right">  
+            <form action="api/contact" method="post" class="contact-form">  
+                <div class="form-group">  
+                    <label for="name">이름</label>  
+                    <input type="text" id="name" name="name" required placeholder="홍길동">  
+                </div>  
 
-    <h2>문의하기</h2>
-    <form action="api/contact" method="post">
-    <form>
-        <ul>
-            <li>이름: <input type="text" name="name" required></li>
-            <li>연락처: <input type="text" name="phone" required></li>
-            <li>이메일: <input type="text" name="email" required></li>
-            <li>문의내용: 
-                <textarea name="memo" cols="50" row="10"></textarea>
-            </li>
-            <button type=""submit">문의하기</button>
-        </ul>
-    </form>
-<%-include('layouts/footer.ejs')%>
+                <div class="form-group">  
+                    <label for="phone">연락처</label>  
+                    <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678">  
+                </div>  
+
+                <div class="form-group">  
+                    <label for="email">이메일</label>  
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">  
+                </div>  
+
+                <div class="form-group">  
+                    <label for="memo">문의내용</label>  
+                    <textarea id="memo" name="memo" rows="5" placeholder="문의하실 내용을 입력해주세요"></textarea>  
+                </div>  
+
+                <button type="submit" class="submit-btn">문의하기</button>  
+            </form>  
+        </div>  
+    </div>  
+</div>  
