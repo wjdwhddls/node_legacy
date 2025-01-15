@@ -92,6 +92,21 @@ app.get('/contactList', (req, res) => {
     }
   })
 })
+
+app.post('/api/contactDelete/:id', (req,res) => {
+  const id = req.params.id;
+  const deleteQuery =`DELETE FROM CONTACT WHERE ID='${id}'`
+  connectionPool.query(deleteQuery, (err,result) => {
+    if(err) {
+      console.error('데이터 삭제 중 에러 발생: ', err);
+      res.status(500).send
+    } else{
+      console.log('데이터가 삭제 되었습니다.');
+      console.log(result)
+      res.send("<script>alert('문의사항이 삭제되었습니다.'); location.href='/contactList'</script>")
+    }
+  })
+})
 // 서버 시작
 app.listen(port, () => {
   console.log(`Node Legacy App listening on port ${port}`);
