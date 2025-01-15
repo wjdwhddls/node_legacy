@@ -42,11 +42,11 @@ connectionPool.getConnection((err, connection) => {
 
 // GET 요청 라우터
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index',{ title: '메인 페이지' });
 });
 
 app.get('/blog', (req, res) => {
-  res.render('blog');
+  res.render('blog',{ title: '문의하기 페이지' });
 });
 
 app.get('/users', (req, res) => {
