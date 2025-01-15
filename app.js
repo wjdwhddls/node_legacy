@@ -95,7 +95,7 @@ app.get('/contactList', (req, res) => {
 
 app.post('/api/contactDelete/:id', (req,res) => {
   const id = req.params.id;
-  const deleteQuery =`DELETE FROM CONTACT WHERE ID='${id}'`
+  const deleteQuery =`DELETE FROM contact WHERE id='${id}'`
   connectionPool.query(deleteQuery, (err,result) => {
     if(err) {
       console.error('데이터 삭제 중 에러 발생: ', err);
@@ -104,6 +104,23 @@ app.post('/api/contactDelete/:id', (req,res) => {
       console.log('데이터가 삭제 되었습니다.');
       console.log(result)
       res.send("<script>alert('문의사항이 삭제되었습니다.'); location.href='/contactList'</script>")
+    }
+  })
+})
+
+app.post('/api/contactUpdate/:id', (req,res) => {
+  const id = req.params.id;
+  const status = "done";
+  const updateQuery = `UPDATE CONTACT SET status = '${status}' WHERE id = '${id}'`;
+
+  connectionPool.query(updataQuery, (err,result) => {
+    if(err) {
+      console.error('데이터 수정 중 에러 발생: ', err);
+      res.status(500).send
+    } else{
+      console.log('데이터가 수정정 되었습니다.');
+      console.log(result)
+      res.send("<script>alert('문의사항이 상태가 변경되었습니다. .'); location.href='/contactList'</script>")
     }
   })
 })
