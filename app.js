@@ -113,7 +113,7 @@ app.post('/api/contactUpdate/:id', (req,res) => {
   const status = "done";
   const updateQuery = `UPDATE CONTACT SET status = '${status}' WHERE id = '${id}'`;
 
-  connectionPool.query(updataQuery, (err,result) => {
+  connectionPool.query(updateQuery, (err,result) => {
     if(err) {
       console.error('데이터 수정 중 에러 발생: ', err);
       res.status(500).send
