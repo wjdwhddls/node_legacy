@@ -176,14 +176,34 @@ body {
 .profile-container {  
     max-width: 800px;  
     margin: 0 auto;  
-    padding: 40px 20px;  
+    padding: 40px 20px; 
+    z-index: 2; 
+}
+/* 배경 관련 스타일 */  
+.section#profile {  
+    position: relative;  
+    min-height: 100vh;  
+    background: url('/10.jpg') no-repeat center center;  
+    background-size: cover;  
 }  
+
+.section#profile::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background: rgba(255, 255, 255, 0.7); /* 배경만 반투명하게 설정 */  
+    z-index: 1;  
+}   
 
 .profile-header {  
     display: flex;  
     align-items: center;  
     gap: 40px;  
     margin-bottom: 40px;  
+    background: #fff; /* 불투명한 흰색 배경 */  
 }  
 
 .profile-img {  
@@ -246,6 +266,8 @@ body {
     margin: 0 auto;  
     padding: 0 5%;  
     width: 100%;  
+    position: relative;  
+    z-index: 2;
 }  
 
 /* 반응형 디자인 */  
@@ -280,10 +302,12 @@ body {
     }  
 }
 /* 경력 섹션 스타일 */  
+/* career 섹션 스타일 업데이트 */  
 .career-container {  
     max-width: 1200px;  
     margin: 0 auto;  
     padding: 40px 20px;  
+    position: relative;  
 }  
 
 .career-title {  
@@ -291,11 +315,23 @@ body {
     margin-bottom: 50px;  
     font-size: 2.5rem;  
     color: #333;  
+    position: relative;  
+}  
+
+.career-title::after {  
+    content: '';  
+    position: absolute;  
+    bottom: -10px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    width: 60px;  
+    height: 3px;  
+    background: #4CAF50;  
 }  
 
 .skills-grid {  
     display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
     gap: 30px;  
     margin-bottom: 60px;  
 }  
@@ -304,43 +340,76 @@ body {
     background: white;  
     padding: 30px;  
     border-radius: 15px;  
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);  
-    text-align: center;  
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);  
+    transition: all 0.3s ease;  
+    position: relative;  
+    overflow: hidden;  
+}  
+
+.skill-card::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    height: 4px;  
+    background: linear-gradient(to right, #4CAF50, #45a049);  
+    transform: scaleX(0);  
+    transform-origin: left;  
     transition: transform 0.3s ease;  
 }  
 
 .skill-card:hover {  
-    transform: translateY(-5px);  
+    transform: translateY(-10px);  
 }  
 
-.skill-icon {  
+.skill-card:hover::before {  
+    transform: scaleX(1);  
+}  
+
+.skill-icon-wrapper {  
     width: 80px;  
     height: 80px;  
-    margin-bottom: 20px;  
+    margin: 0 auto 20px;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    background: #f8f9fa;  
+    border-radius: 50%;  
+    transition: transform 0.3s ease;  
 }  
 
-.skill-card h3 {  
-    margin-bottom: 15px;  
-    color: #333;  
+.skill-card:hover .skill-icon-wrapper {  
+    transform: rotate(360deg);  
+}  
+
+.skill-level-wrapper {  
+    margin: 15px 0;  
 }  
 
 .skill-level {  
     background: #f0f0f0;  
     height: 10px;  
     border-radius: 5px;  
-    margin: 15px 0;  
     overflow: hidden;  
+    position: relative;  
 }  
 
 .progress-bar {  
     height: 100%;  
-    background: #4CAF50;  
+    background: linear-gradient(to right, #4CAF50, #45a049);  
     border-radius: 5px;  
+    transform: scaleX(0);  
+    transform-origin: left;  
+    transition: transform 1s ease;  
 }  
 
-.skill-card p {  
-    color: #666;  
+.skill-percentage {  
+    display: block;  
+    text-align: right;  
     font-size: 0.9rem;  
+    color: #666;  
+    margin-top: 5px;  
 }  
 
 /* 경험 섹션 스타일 */  
@@ -651,3 +720,83 @@ body {
         max-width: 150px;  
     }  
 }  
+/* 기존 CSS에 추가 */  /*애니매이션 효과*/
+.profile-header {  
+    transition: transform 0.3s ease;  
+}  
+
+.profile-header:hover {  
+    transform: translateY(-5px);  
+}  
+
+.profile-img {  
+    transition: transform 0.3s ease;  
+}  
+
+.profile-img:hover {  
+    transform: scale(1.05);  
+}  
+
+/* 스크롤 인디케이터 추가 */  
+.scroll-indicator {  
+    position: absolute;  
+    bottom: 30px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    animation: bounce 2s infinite;  
+}  
+
+.scroll-indicator i {  
+    color: #333;  
+    font-size: 24px;  
+}  
+
+@keyframes bounce {  
+    0%, 20%, 50%, 80%, 100% {  
+        transform: translateY(0);  
+    }  
+    40% {  
+        transform: translateY(-30px);  
+    }  
+    60% {  
+        transform: translateY(-15px);  
+    }  
+}  
+
+/* 배경 페이드 효과 */  
+.section#profile {  
+    transition: background-color 0.5s ease;  
+}  
+
+/* 스크롤 프로그레스 바 */  
+.scroll-progress {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    height: 3px;  
+    background: #007bff;  
+    z-index: 1000;  
+    transition: width 0.3s ease;  
+}
+/* 기존 CSS에 추가 */  
+.section#profile {  
+    position: relative;  
+    min-height: 100vh;  
+    background: url('/10.jpg') no-repeat center center;  
+    background-size: cover;  
+    opacity: 1; /* opacity를 1로 설정 */  
+} 
+
+.section#profile.visible {  
+    opacity: 1;  
+}  
+
+/* 스무스 스크롤 효과 추가 */  
+html {  
+    scroll-behavior: smooth;  
+}  
+
+/* 애니메이션 리셋을 위한 스타일 */  
+[data-aos].aos-animate {  
+    opacity: 1;  
+}   

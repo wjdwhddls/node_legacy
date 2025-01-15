@@ -1,30 +1,68 @@
-<!-- profile.ejs -->  
-<div class="profile-container">  
-    <div class="profile-header">  
-        <img src="/1.jpg" alt="내 프로필 사진" class="profile-img">  
-        <div class="profile-details">  
-            <h2>정종인</h2>  
-            <p>이메일: bfpark99@gmail.com</p>  
-            <p>전화번호: 010-2914-2363</p>  
-            <p>분야: 백엔드 개발자, 풀스택 개발자</p>  
+<section id="profile" class="section">  
+    <div class="profile-container">  
+        <div class="profile-header" data-aos="fade-down" data-aos-duration="800">  
+            <div class="profile-img" data-aos="zoom-in" data-aos-delay="200">  
+                <img src="your-image.jpg" alt="Profile Image">  
+            </div>  
+            <div class="profile-details" data-aos="fade-left" data-aos-delay="400">  
+                <h2>정종인</h2>  
+                <p>이메일: bfpark99@gmail.com</p>  
+                <p>전화번호: 010-2914-2363</p>  
+                <p>분야: 백엔드 개발자, 풀스택 개발자</p>  
+            </div>  
+        </div>  
+
+        <div class="profile-body" data-aos="fade-up" data-aos-delay="600">  
+            <div data-aos="fade-right" data-aos-delay="800">  
+                <h3>자기소개</h3>  
+                <p>안녕하세요! 저는 열정적으로 도전을 즐기며, 성장과 학습을 중요하게 생각합니다. 다양한 프로젝트에 참여하며 배운 경험을 통해 사람들에게 긍정적인 변화를 제공하고자 합니다.</p>  
+            </div>  
+
+            <div data-aos="fade-right" data-aos-delay="900">  
+                <h3>관심사</h3>  
+                <ul class="interests-list">  
+                    <li data-aos="fade-left" data-aos-delay="1000">개인 개발 및 자기 성장</li>  
+                    <li data-aos="fade-left" data-aos-delay="1100">독서 및 글쓰기</li>  
+                    <li data-aos="fade-left" data-aos-delay="1200">코칭 및 상담</li>  
+                    <li data-aos="fade-left" data-aos-delay="1300">여행과 새로운 경험</li>  
+                </ul>  
+            </div>  
         </div>  
     </div>  
+</section>  
+<script>  
+    AOS.init({  
+        duration: 1000,  
+        once: false,  // 매번 애니메이션 실행  
+        easing: 'ease-out-cubic',  
+        offset: 100   // 애니메이션 시작 시점 조정  
+    });  
 
-    <div class="profile-body">  
-        <h3>자기소개</h3>  
-        <p>안녕하세요! 저는 열정적으로 도전을 즐기며, 성장과 학습을 중요하게 생각합니다. 다양한 프로젝트에 참여하며 배운 경험을 통해 사람들에게 긍정적인 변화를 제공하고자 합니다.</p>  
+    // 프로필 섹션이 뷰포트에 들어올 때 애니메이션 리프레시  
+    const observer = new IntersectionObserver((entries) => {  
+        entries.forEach(entry => {  
+            if (entry.isIntersecting) {  
+                AOS.refresh();  
+            }  
+        });  
+    }, {  
+        threshold: 0.1  
+    });  
 
-        <h3>관심사</h3>  
-        <ul class="interests-list">  
-            <li>개인 개발 및 자기 성장</li>  
-            <li>독서 및 글쓰기</li>  
-            <li>코칭 및 상담</li>  
-            <li>여행과 새로운 경험</li>  
-        </ul>  
+    // 프로필 섹션 관찰 시작  
+    const profileSection = document.getElementById('profile');  
+    if (profileSection) {  
+        observer.observe(profileSection);  
+    }  
 
-        <h3>경험 및 활동</h3>  
-        <p>- 2023년 MBTI 코칭 프로그램 참여</p>  
-        <p>- 2024년 리더십 워크숍 발표</p>  
-        <p>- 2025년 전문 강사 자격 취득</p>  
-    </div>  
-</div>
+    // 스크롤 프로그레스 바  
+    window.addEventListener('scroll', () => {  
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;  
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+        const scrolled = (winScroll / height) * 100;  
+        const progressBar = document.querySelector('.scroll-progress');  
+        if (progressBar) {  
+            progressBar.style.width = scrolled + '%';  
+        }  
+    });  
+</script>  

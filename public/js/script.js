@@ -39,3 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 자동 슬라이드  
     setInterval(nextSlide, 5000);  
   });
+  window.addEventListener('scroll', () => {  
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;  
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+    const scrolled = (winScroll / height) * 100;  
+    document.querySelector('.scroll-progress').style.width = scrolled + '%';  
+});  
