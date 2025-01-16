@@ -45,3 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrolled = (winScroll / height) * 100;  
     document.querySelector('.scroll-progress').style.width = scrolled + '%';  
 });  
+// GitHub 링크 클릭 이벤트 핸들러  
+document.querySelector('.github-link').addEventListener('click', function(e) {  
+  e.preventDefault();  
+  window.open(this.href, '_blank');  
+});  
+// 소셜 링크 클릭 이벤트 핸들러  
+document.querySelectorAll('.social-link').forEach(link => {  
+  link.addEventListener('click', function(e) {  
+      e.preventDefault();  
+      window.open(this.href, '_blank');  
+  });  
+}); 
