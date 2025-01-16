@@ -57,3 +57,21 @@ document.querySelectorAll('.social-link').forEach(link => {
       window.open(this.href, '_blank');  
   });  
 }); 
+document.addEventListener('DOMContentLoaded', function() {  
+  // 프로그레스 바 애니메이션  
+  const progressBars = document.querySelectorAll('.progress-bar');  
+  progressBars.forEach(bar => {  
+      setTimeout(() => {  
+          bar.style.transform = 'scaleX(1)';  
+      }, 500);  
+  });  
+
+  // AOS 초기화 (AOS 라이브러리를 사용중인 경우)  
+  if (typeof AOS !== 'undefined') {  
+      AOS.init({  
+          duration: 1000,  
+          once: false,  
+          mirror: true  
+      });  
+  }  
+});  
