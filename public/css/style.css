@@ -1,0 +1,1000 @@
+/* 기본 리셋 */  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+}  
+
+body {  
+    font-family: 'Arial', sans-serif;  
+}  
+
+/* 네비게이션 바 스타일 */  
+.main-header {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    background-color: white;  
+    z-index: 1000;  
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  
+}  
+
+.navbar {  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 20px 5%;  
+}  
+
+.navbar-logo a {  
+    font-size: 24px;  
+    font-weight: bold;  
+    text-decoration: none;  
+    color: #000;  
+}  
+
+.nav-links {  
+    display: flex;  
+    align-items: center;  
+    list-style: none;  
+    gap: 30px;  
+}  
+
+.nav-links a {  
+    text-decoration: none;  
+    color: #000;  
+    font-weight: 500;  
+}  
+
+.nav-divider {  
+    color: #ddd;  
+    margin: 0 10px;  
+}  
+
+/* 섹션 공통 스타일 */  
+.section {  
+    min-height: 100vh;  
+    padding-top: 80px;  
+    display: flex;  
+    align-items: center;  
+    position: relative;  
+}  
+
+/* 홈 섹션 스타일 */  
+#home {  
+    background-image: url('/4.jpg');  
+    background-size: cover;  
+    background-position: center;  
+    background-repeat: no-repeat;  
+    position: relative;  
+}  
+
+/* 배경 이미지 위에 오버레이 효과를 주기 위한 스타일 */  
+#home::before {  
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background-color: rgba(255, 255, 255, 0.8);  
+    z-index: 1;  
+}  
+
+.home-content {  
+    position: relative;  
+    z-index: 2;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 0 5%;  
+    width: 100%;  
+}  
+
+.home-text {  
+    flex: 1;  
+    padding-right: 50px;  
+}  
+
+.home-text h1 {  
+    font-size: 3.5rem;  
+    margin-bottom: 20px;  
+}  
+
+.home-text span {  
+    color: #666;  
+}  
+
+.home-text p {  
+    font-size: 1.2rem;  
+    color: #666;  
+    line-height: 1.6;  
+}  
+
+/* 슬라이더 스타일 */  
+.slider-container {  
+    flex: 1;  
+    position: relative;  
+    width: 100%;  
+    max-width: 600px;  
+    aspect-ratio: 16/9;  
+    overflow: hidden;  
+}  
+
+.slider {  
+    width: 100%;  
+    height: 100%;  
+    position: relative;  
+}  
+
+.slide {  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    height: 100%;  
+    display: none;  
+    opacity: 0;  
+    transition: opacity 0.5s ease-in-out;  
+    object-fit: cover;  
+}  
+
+.slide.active {  
+    display: block;  
+    opacity: 1;  
+}  
+
+.slider-dots {  
+    position: absolute;  
+    bottom: 20px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    display: flex;  
+    gap: 10px;  
+    z-index: 2;  
+}  
+
+.dot {  
+    width: 10px;  
+    height: 10px;  
+    border-radius: 50%;  
+    background-color: rgba(255, 255, 255, 0.5);  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+}  
+
+.dot.active {  
+    background-color: white;  
+}  
+
+/* 프로필 섹션 스타일 */  
+.profile-container {  
+    max-width: 800px;  
+    margin: 0 auto;  
+    padding: 40px;  
+    background: white;  
+    border-radius: 15px;  
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);  
+}  
+/* 배경 관련 스타일 */  
+.section#profile {  
+    position: relative;  
+    min-height: 100vh;  
+    background: #f8f9fa;  
+    padding: 80px 0;  
+}  
+
+.name-section {  
+    display: flex;  
+    align-items: center;  
+    gap: 15px;  
+    margin-bottom: 15px;  
+    position: relative;  
+    z-index: 100;  
+}  
+
+.social-links {  
+    display: flex;  
+    align-items: center;  
+    gap: 10px;  
+}  
+
+.social-link {  
+    display: inline-flex;  
+    align-items: center;  
+    justify-content: center;  
+    width: 40px;  
+    height: 40px;  
+    cursor: pointer;  
+    position: relative;  
+    z-index: 101;  
+    background: transparent;  
+    border-radius: 50%;  
+    transition: all 0.3s ease;  
+}  
+
+.social-link svg {  
+    width: 24px;  
+    height: 24px;  
+    fill: #333;  
+    transition: fill 0.3s ease;  
+}  
+
+.social-link:hover {  
+    transform: translateY(-2px);  
+}  
+
+/* GitHub 아이콘 호버 효과 */  
+.github-link:hover svg {  
+    fill: #4078c0;  
+}  
+
+/* Tistory 아이콘 호버 효과 */  
+.tistory-link:hover svg {  
+    fill: #e74c3c;  
+}  
+
+/* 상위 요소들의 z-index 조정 */  
+.profile-container {  
+    position: relative;  
+    z-index: 98;  
+}  
+
+.profile-header {  
+    position: relative;  
+    z-index: 99;  
+}  
+
+/* AOS 애니메이션 요소들의 z-index 조정 */  
+[data-aos] {  
+    z-index: 1;  
+}
+.section#profile::before {
+    content: '';  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background: none; /* 오버레이 제거 */
+    z-index: 1;  
+}
+
+.profile-header {  
+    display: flex;  
+    align-items: center;  
+    gap: 40px;  
+    margin-bottom: 40px;  
+    background: #fff; /* 불투명한 흰색 배경 */  
+}  
+
+.profile-img {  
+    flex: 0 0 200px; /* 이미지 크기 고정 */  
+}   
+.profile-img img {  
+    width: 200px;  
+    height: 200px;  
+    border-radius: 50%;  
+    object-fit: cover;  
+    border: 4px solid #fff;  
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);  
+}  
+
+.profile-details {  
+    flex: 1;  
+}  
+
+.profile-details h2 {  
+    font-size: 2rem;  
+    margin-bottom: 15px;  
+}  
+
+.profile-details p {  
+    margin: 8px 0;  
+    color: #666;  
+}  
+
+.profile-body {  
+    background-color: #f9f9f9;  
+    padding: 30px;  
+    border-radius: 10px;  
+}  
+
+.profile-body h3 {  
+    color: #333;  
+    margin: 25px 0 15px;  
+}  
+
+.profile-body h3:first-child {  
+    margin-top: 0;  
+}  
+
+.interests-list {  
+    list-style-type: none;  
+    padding: 0;  
+}  
+
+.interests-list li {  
+    margin: 10px 0;  
+    padding-left: 20px;  
+    position: relative;  
+}  
+
+.interests-list li::before {  
+    content: "•";  
+    position: absolute;  
+    left: 0;  
+    color: #666;  
+}  
+
+/* 섹션 콘텐츠 스타일 */  
+.section-content {  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 0 5%;  
+    width: 100%;  
+    position: relative;  
+    z-index: 2;
+}  
+
+/* 반응형 디자인 */  
+@media (max-width: 768px) {  
+    .home-content {  
+        flex-direction: column;  
+        text-align: center;  
+    }  
+
+    .home-text {  
+        padding-right: 0;  
+        margin-bottom: 30px;  
+    }  
+
+    .nav-links {  
+        display: none;  
+    }  
+
+    .profile-header {  
+        flex-direction: column;  
+        text-align: center;  
+        gap: 20px;  
+    }  
+
+    .profile-img {  
+        width: 150px;  
+        height: 150px;  
+    }  
+
+    .profile-body {  
+        padding: 20px;  
+    }  
+}
+/* Career 섹션 스타일 */  
+#career {  
+    position: relative;  
+    min-height: 100vh;  
+    background: rgba(139, 69, 19, 0.15);  
+    padding: 80px 0;  
+}  
+
+.career-container {  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 40px 20px;  
+    position: relative;  
+}  
+
+.career-title {  
+    text-align: center;  
+    margin-bottom: 50px;  
+    font-size: 2.5rem;  
+    color: #333;  
+    position: relative;  
+}  
+
+.career-title::after {  
+    content: '';  
+    position: absolute;  
+    bottom: -10px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    width: 60px;  
+    height: 3px;  
+    background: #4CAF50;  
+}  
+
+/* 스킬 카드 그리드 컨테이너 */  
+.career-container {  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 40px 20px;  
+    overflow-x: hidden; /* 가로 스크롤 방지 */  
+}  
+
+/* 스킬 카드 그리드 */  
+.skills-grid {  
+    display: flex;  
+    flex-wrap: wrap;  
+    justify-content: center;  
+    gap: 40px;  
+    padding: 30px;  
+    max-width: 1200px;  
+    margin: 0 auto;  
+}  
+
+/* 스킬 카드 */  
+.skill-card {  
+    width: 320px;  
+    height: 320px;  
+    position: relative;  
+    transform-style: preserve-3d;  
+    transition: transform 0.8s ease;  
+    cursor: pointer;  
+    flex-shrink: 0; /* 카드 크기 고정 */  
+}  
+
+.skill-card:hover {  
+    transform: rotateY(180deg);  
+}  
+
+.skill-card-front,  
+.skill-card-back {  
+    position: absolute;  
+    width: 100%;  
+    height: 100%;  
+    backface-visibility: hidden;  
+    border-radius: 20px;  
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);  
+    background: white;  
+    padding: 25px;  
+}  
+
+.skill-card-back {  
+    transform: rotateY(180deg);  
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    justify-content: center;  
+    text-align: center;  
+}  
+
+/* 스킬 아이콘 */  
+.skill-icon {  
+    width: 70px;  
+    height: 70px;  
+    object-fit: contain;  
+    transition: transform 0.3s ease;  
+}  
+
+/* 반응형 스타일 */  
+@media (max-width: 1200px) {  
+    .skills-grid {  
+        justify-content: center;  
+        gap: 30px;  
+    }  
+}  
+
+@media (max-width: 768px) {  
+    .skills-grid {  
+        padding: 15px;  
+    }  
+    
+    .skill-card {  
+        width: 300px; /* 모바일에서 카드 크기 약간 축소 */  
+        height: 300px;  
+    }  
+}    
+
+/* 스킬 레벨 */  
+.skill-level {  
+    width: 85%;  
+    height: 12px;  
+    background: #f0f0f0;  
+    border-radius: 8px;  
+    margin: 20px auto;  
+    overflow: hidden;  
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);  
+}  
+
+.progress-bar {  
+    height: 100%;  
+    background: linear-gradient(to right, #4CAF50, #45a049);  
+    border-radius: 8px;  
+    transform: scaleX(0);  
+    transform-origin: left;  
+    transition: transform 1.2s ease-in-out;  
+}  
+
+/* 타임라인 섹션 */  
+.experience-section {  
+    margin-top: 80px;  
+}  
+
+.timeline {  
+    position: relative;  
+    max-width: 800px;  
+    margin: 0 auto;  
+    padding: 40px 20px;  
+}  
+
+.timeline::before {  
+    content: '';  
+    position: absolute;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    width: 2px;  
+    height: 100%;  
+    background: #4CAF50;  
+}  
+
+.timeline-item {  
+    margin-bottom: 40px;  
+    position: relative;  
+}  
+
+.timeline-dot {  
+    width: 16px;  
+    height: 16px;  
+    background: #4CAF50;  
+    border-radius: 50%;  
+    position: absolute;  
+    left: 50%;  
+    transform: translateX(-50%);  
+}  
+
+.timeline-content {  
+    width: calc(50% - 30px);  
+    padding: 20px;  
+    background: white;  
+    border-radius: 10px;  
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);  
+    position: relative;  
+}  
+
+.timeline-item:nth-child(odd) .timeline-content {  
+    margin-left: auto;  
+}  
+
+/* 반응형 스타일 */  
+@media (max-width: 768px) {  
+    .skills-grid {  
+        grid-template-columns: 1fr;  
+        gap: 40px;  
+        padding: 20px;  
+    }  
+
+    .timeline::before {  
+        left: 30px;  
+    }  
+
+    .timeline-dot {  
+        left: 30px;  
+    }  
+
+    .timeline-content {  
+        width: calc(100% - 60px);  
+        margin-left: 60px !important;  
+    }  
+} 
+/* 전체 페이지 스크롤바 숨기기 */  
+html, body {  
+    overflow-x: hidden;  
+    -ms-overflow-style: none;  /* IE and Edge */  
+    scrollbar-width: none;     /* Firefox */  
+}  
+
+/* Chrome, Safari, Opera에서 스크롤바 숨기기 */  
+html::-webkit-scrollbar,  
+body::-webkit-scrollbar {  
+    display: none;  
+}  
+
+/* career 섹션 스크롤바 숨기기 */  
+#career {  
+    overflow-x: hidden;  
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}  
+
+#career::-webkit-scrollbar {  
+    display: none;  
+}  
+
+/* career 컨테이너 스크롤바 숨기기 */  
+.career-container {  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 40px 20px;  
+    overflow-x: hidden;  
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}  
+
+.career-container::-webkit-scrollbar {  
+    display: none;  
+} 
+/* 문의하기 페이지 스타일 */  
+.contact-container {  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 80px 20px;  
+    min-height: calc(100vh - 80px);  
+}  
+
+.contact-content {  
+    display: flex;  
+    gap: 60px;  
+    align-items: center;  
+    background: white;  
+    border-radius: 20px;  
+    padding: 40px;  
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);  
+}  
+
+.contact-left {  
+    flex: 1;  
+}  
+
+.contact-left h1 {  
+    font-size: 3rem;  
+    line-height: 1.2;  
+    margin-bottom: 30px;  
+    color: #333;  
+}  
+
+.contact-illustration {  
+    max-width: 400px;  
+    margin: 0 auto;  
+}  
+
+.contact-illustration img {  
+    width: 100%;  
+    height: auto;  
+}  
+
+.contact-right {  
+    flex: 1;  
+}  
+
+.contact-form {  
+    display: flex;  
+    flex-direction: column;  
+    gap: 20px;  
+}  
+
+.form-group {  
+    display: flex;  
+    flex-direction: column;  
+    gap: 8px;  
+}  
+
+.form-group label {  
+    font-size: 0.9rem;  
+    font-weight: 500;  
+    color: #666;  
+}  
+
+.form-group input,  
+.form-group textarea {  
+    padding: 12px 16px;  
+    border: 2px solid #eee;  
+    border-radius: 8px;  
+    font-size: 1rem;  
+    transition: border-color 0.3s ease;  
+}  
+
+.form-group input:focus,  
+.form-group textarea:focus {  
+    outline: none;  
+    border-color: #4CAF50;  
+}  
+
+.submit-btn {  
+    background: #4CAF50;  
+    color: white;  
+    border: none;  
+    padding: 15px 30px;  
+    border-radius: 8px;  
+    font-size: 1rem;  
+    font-weight: 600;  
+    cursor: pointer;  
+    transition: background 0.3s ease;  
+}  
+
+.submit-btn:hover {  
+    background: #45a049;  
+}  
+
+/* 반응형 디자인 */  
+@media (max-width: 768px) {  
+    .contact-content {  
+        flex-direction: column;  
+        padding: 20px;  
+    }  
+
+    .contact-left h1 {  
+        font-size: 2rem;  
+        text-align: center;  
+    }  
+
+    .contact-illustration {  
+        max-width: 300px;  
+        margin-bottom: 30px;  
+    } 
+
+}
+.contact-list-container {  
+    max-width: 1200px;  
+    margin: 80px auto;  
+    padding: 0 20px;  
+}  
+
+.contact-list-header {  
+    text-align: center;  
+    margin-bottom: 40px;  
+}  
+
+.contact-list-header h1 {  
+    font-size: 2.5rem;  
+    color: #333;  
+    margin-bottom: 10px;  
+}  
+
+.contact-table-wrapper {  
+    background: white;  
+    border-radius: 12px;  
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);  
+    overflow: hidden;  
+}  
+
+.contact-table {  
+    width: 100%;  
+    border-collapse: collapse;  
+    font-size: 0.95rem;  
+}  
+
+.contact-table th {  
+    background-color: #f8f9fa;  
+    padding: 16px 20px;  
+    font-weight: 600;  
+    color: #333;  
+    text-align: left;  
+    border-bottom: 2px solid #e9ecef;  
+}  
+
+.contact-table td {  
+    padding: 16px 20px;  
+    border-bottom: 1px solid #e9ecef;  
+    color: #495057;  
+}  
+
+.contact-table tr:hover {  
+    background-color: #f8f9fa;  
+}  
+
+/* 상태 뱃지 스타일 */  
+.status-badge {  
+    padding: 6px 12px;  
+    border-radius: 20px;  
+    font-size: 0.85em;  
+    font-weight: 500;  
+    display: inline-block;  
+}  
+
+.status-badge.pending {  
+    background-color: #FFF3CD;  
+    color: #856404;  
+}  
+
+.status-badge.completed {  
+    background-color: #D4EDDA;  
+    color: #155724;  
+}  
+
+/* 버튼 스타일 */  
+.button-group {  
+    display: flex;  
+    gap: 8px;  
+}  
+
+.update-btn, .delete-btn {  
+    padding: 6px 12px;  
+    border: none;  
+    border-radius: 6px;  
+    font-size: 0.85em;  
+    font-weight: 500;  
+    cursor: pointer;  
+    transition: all 0.2s;  
+}  
+
+.update-btn {  
+    background-color: #40c057;  
+    color: white;  
+}  
+
+.update-btn:hover {  
+    background-color: #37b24d;  
+}  
+
+.delete-btn {  
+    background-color: #fa5252;  
+    color: white;  
+}  
+
+.delete-btn:hover {  
+    background-color: #e03131;  
+}  
+
+.processing {  
+    background-color: #fff3cd;  
+    color: #856404;  
+    padding: 4px 8px;  
+    border-radius: 4px;  
+    font-size: 0.85em;  
+}  
+
+.completed {  
+    background-color: #d4edda;  
+    color: #155724;  
+    padding: 4px 8px;  
+    border-radius: 4px;  
+    font-size: 0.85em;  
+}  
+
+/* 반응형 디자인 */  
+@media (max-width: 768px) {  
+    .contact-list-container {  
+        margin: 40px auto;  
+        padding: 0 10px;  
+    }  
+
+    .contact-table th,  
+    .contact-table td {  
+        padding: 12px 10px;  
+        font-size: 0.9em;  
+    }  
+
+    .button-group {  
+        flex-direction: column;  
+        gap: 4px;  
+    }  
+
+    .update-btn, .delete-btn {  
+        width: 100%;  
+    }  
+}  
+
+/* 처리완료, 삭제 버튼 스타일 */  
+.action-button {  
+    padding: 6px 12px;  
+    border: none;  
+    border-radius: 4px;  
+    font-size: 0.85em;  
+    font-weight: 500;  
+    cursor: pointer;  
+    transition: all 0.2s;  
+}  
+
+.process-btn {  
+    background-color: #40c057;  
+    color: white;  
+}  
+
+.delete-btn {  
+    background-color: #fa5252;  
+    color: white;  
+}  
+
+.action-button:hover {  
+    opacity: 0.9;  
+    transform: translateY(-1px);  
+}  
+
+/* 테이블 셀 정렬 */  
+.contact-table td {  
+    vertical-align: middle;  
+}  
+
+/* 날짜 칼럼 스타일 */  
+.date-column {  
+    color: #666;  
+    font-size: 0.9em;  
+}  
+
+/* 이메일 칼럼 스타일 */  
+.email-column {  
+    color: #1971c2;  
+}  
+
+/* 내용 칼럼 최대 너비 설정 */  
+.content-column {  
+    max-width: 300px;  
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+}  
+/* 기존 CSS에 추가 */  /*애니매이션 효과*/
+.profile-header {  
+    transition: transform 0.3s ease;  
+}  
+
+.profile-header:hover {  
+    transform: translateY(-5px);  
+}  
+
+.profile-img {  
+    transition: transform 0.3s ease;  
+}  
+
+.profile-img:hover {  
+    transform: scale(1.05);  
+}  
+
+/* 스크롤 인디케이터 추가 */  
+.scroll-indicator {  
+    position: absolute;  
+    bottom: 30px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    animation: bounce 2s infinite;  
+}  
+
+.scroll-indicator i {  
+    color: #333;  
+    font-size: 24px;  
+}  
+
+@keyframes bounce {  
+    0%, 20%, 50%, 80%, 100% {  
+        transform: translateY(0);  
+    }  
+    40% {  
+        transform: translateY(-30px);  
+    }  
+    60% {  
+        transform: translateY(-15px);  
+    }  
+}  
+
+/* 배경 페이드 효과 */  
+.section#profile {  
+    transition: background-color 0.5s ease;  
+}  
+
+/* 스크롤 프로그레스 바 */  
+.scroll-progress {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    height: 3px;  
+    background: #007bff;  
+    z-index: 1000;  
+    transition: width 0.3s ease;  
+}
+/* 기존 CSS에 추가 */  
+.section#profile {  
+    position: relative;  
+    min-height: 100vh;  
+    background: rgba(139, 69, 19, 0.15); /* 부드러운 갈색 */   
+    background-size: cover;  
+    opacity: 1; /* opacity를 1로 설정 */  
+} 
+
+.section#profile.visible {  
+    opacity: 1;  
+}  
+
+/* 스무스 스크롤 효과 추가 */  
+html {  
+    scroll-behavior: smooth;  
+}  
+
+/* 애니메이션 리셋을 위한 스타일 */  
+[data-aos].aos-animate {  
+    opacity: 1;  
+}   

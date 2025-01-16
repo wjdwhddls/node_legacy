@@ -1,0 +1,105 @@
+<!-- career.ejs -->  
+<section id="career" class="section">  
+    <div class="career-container">  
+        <h1 class="career-title" data-aos="fade-down">Technical Skills</h1>  
+        
+        <div class="skills-grid">  
+            <!-- Git 스킬 카드 -->  
+            <div class="skill-card">  
+                <div class="skill-card-front">  
+                    <img src="/5.jpg" alt="Git" class="skill-icon">  
+                    <h3 class="skill-name">Git</h3>  
+                    <div class="skill-level">  
+                        <div class="progress-bar" style="width: 70%"></div>  
+                    </div>  
+                    <span class="skill-percentage">70%</span>  
+                </div>  
+                <div class="skill-card-back">  
+                    <h3 class="skill-name">Git</h3>  
+                    <p class="skill-description">  
+                        버전 관리 및 협업 도구를 활용한 프로젝트 관리 경험이 있습니다.  
+                        branch 관리, merge 전략, conflict 해결 등의 실무 경험을 보유하고 있습니다.  
+                    </p>  
+                </div>  
+            </div>  
+
+            <!-- Node.js 스킬 카드 -->  
+            <div class="skill-card">  
+                <div class="skill-card-front">  
+                    <img src="/6.png" alt="Node.js" class="skill-icon">  
+                    <h3 class="skill-name">Node.js</h3>  
+                    <div class="skill-level">  
+                        <div class="progress-bar" style="width: 40%"></div>  
+                    </div>  
+                    <span class="skill-percentage">40%</span>  
+                </div>  
+                <div class="skill-card-back">  
+                    <h3 class="skill-name">Node.js</h3>  
+                    <p class="skill-description">  
+                        서버 사이드 JavaScript 런타임 환경에서의 개발 경험을 보유하고 있습니다.  
+                        Express.js 프레임워크를 활용한 웹 애플리케이션 개발이 가능합니다.  
+                    </p>  
+                </div>  
+            </div>  
+
+            <!-- Python 스킬 카드 -->  
+            <div class="skill-card">  
+                <div class="skill-card-front">  
+                    <img src="/14.jpg" alt="Python" class="skill-icon">  
+                    <h3 class="skill-name">Python</h3>  
+                    <div class="skill-level">  
+                        <div class="progress-bar" style="width: 50%"></div>  
+                    </div>  
+                    <span class="skill-percentage">50%</span>  
+                </div>  
+                <div class="skill-card-back">  
+                    <h3 class="skill-name">Python</h3>  
+                    <p class="skill-description">  
+                        데이터 분석과 웹 개발에서 Python을 활용한 경험이 있습니다.  
+                        기본적인 알고리즘 구현과 라이브러리 활용이 가능합니다.  
+                    </p>  
+                </div>  
+            </div>  
+        </div>  
+
+        <div class="experience-section" data-aos="fade-up">  
+            <h2>Experience Timeline</h2>  
+            <div class="timeline">  
+                <div class="timeline-item" data-aos="fade-right">  
+                    <div class="timeline-dot"></div>  
+                    <div class="timeline-content">  
+                        <h3>백앤드 웹개발</h3>  
+                        <div class="timeline-date">2025.01 - 2025.06</div>  
+                        <p>아직 미정</p>  
+                    </div>  
+                </div>  
+                <div class="timeline-item" data-aos="fade-left">  
+                    <div class="timeline-dot"></div>  
+                    <div class="timeline-content">  
+                        <h3>졸업 프로젝트</h3>  
+                        <div class="timeline-date">2025.01 - 2025.11</div>  
+                        <p>은행 상품 추천 어플리케이션</p>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+</section>  
+<script>  
+    document.addEventListener('DOMContentLoaded', function() {  
+        // 프로그레스 바 애니메이션  
+        const progressBars = document.querySelectorAll('.progress-bar');  
+        progressBars.forEach(bar => {  
+            setTimeout(() => {  
+                bar.style.transform = 'scaleX(1)';  
+            }, 500);  
+        });  
+    
+        // AOS 초기화  
+        AOS.init({  
+            duration: 1000,  
+            once: false,  
+            mirror: true  
+        });  
+    });  
+</script>  
