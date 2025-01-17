@@ -1,44 +1,44 @@
 <div class="contact-list-container">  
     <div class="contact-list-header">  
-        <h1>문의 목록</h1>  
-        <p>접수된 문의사항 목록입니다</p>  
+        <h1 class="text-3xl font-bold">문의 목록</h1>  
+        <p class="text-gray-600">접수된 문의사항 목록입니다</p>  
     </div>  
 
     <div class="contact-table-wrapper">  
         <% if (lists && lists.length > 0) { %>  
-            <table class="contact-table">  
-                <thead>  
+            <table class="contact-table w-full bg-white shadow-md rounded-lg overflow-hidden">  
+                <thead class="bg-gray-200">  
                     <tr>  
-                        <th>번호</th>  
-                        <th>이름</th>  
-                        <th>연락처</th>  
-                        <th>이메일</th>  
-                        <th>문의내용</th>  
-                        <th>상태</th>  
-                        <th>등록일</th>  
-                        <th>수정일</th>  
-                        <th>처리</th>  
-                        <th>삭제</th>  
+                        <th class="p-4">번호</th>  
+                        <th class="p-4">이름</th>  
+                        <th class="p-4">연락처</th>  
+                        <th class="p-4">이메일</th>  
+                        <th class="p-4 content-column">문의내용</th>  
+                        <th class="p-4">상태</th>  
+                        <th class="p-4 date-column">등록일</th>  
+                        <th class="p-4 date-column">수정일</th>  
+                        <th class="p-4">처리</th>  
+                        <th class="p-4">삭제</th>  
                     </tr>  
                 </thead>  
-                <tbody>  
-                    <% lists.forEach(function(item) { %>  
-                    <tr>  
-                        <td><%=item.id%></td>  
-                        <td><%=item.name%></td>  
-                        <td><%=item.phone%></td>  
-                        <td><%=item.email%></td>  
-                        <td class="memo-cell"><%=item.memo%></td>  
-                        <td>  
+                <tbody id="contact-list">  
+                    <% lists.forEach(function(item, index) { %>  
+                    <tr class="hover:bg-gray-100 transition duration-200" style="opacity: 0; animation: fadeIn 0.5s forwards; animation-delay: '<%= index * 0.1 %>s';">  
+                        <td class="p-4"><%=item.id%></td>  
+                        <td class="p-4"><%=item.name%></td>  
+                        <td class="p-4"><%=item.phone%></td>  
+                        <td class="p-4 email-column"><%=item.email%></td>  
+                        <td class="p-4 memo-cell content-column"><%=item.memo%></td>  
+                        <td class="p-4">  
                             <% if(item.status === 'done') { %>  
                                 <span class="status-badge completed">처리완료</span>  
                             <% } else { %>  
                                 <span class="status-badge pending">대기중</span>  
                             <% } %>  
                         </td>  
-                        <td><%=new Date(item.create_at).toLocaleDateString()%></td>  
-                        <td><%=new Date(item.modify_at).toLocaleDateString()%></td>  
-                        <td>  
+                        <td class="p-4 date-column"><%=new Date(item.create_at).toLocaleDateString()%></td>  
+                        <td class="p-4 date-column"><%=new Date(item.modify_at).toLocaleDateString()%></td>  
+                        <td class="p-4 button-group">  
                             <% if(item.status !== 'done') { %>  
                                 <button class="update-btn" type="button" onclick="updateContact(<%=item.id%>)">  
                                     처리하기  
@@ -49,7 +49,7 @@
                                 </button>  
                             <% } %>  
                         </td>  
-                        <td>  
+                        <td class="p-4">  
                             <button class="delete-btn" type="button" onclick="deleteContact(<%=item.id%>)">  
                                 삭제  
                             </button>  
@@ -59,12 +59,25 @@
                 </tbody>  
             </table>  
         <% } else { %>  
-            <div class="no-data-message">  
+            <div class="no-data-message text-center p-10 text-gray-600">  
                 <p>등록된 문의사항이 없습니다.</p>  
             </div>  
         <% } %>  
     </div>  
 </div>  
+
+<style>  
+@keyframes fadeIn {  
+    from {  
+        opacity: 0;  
+        transform: translateY(10px);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
+}  
+</style>  
 
 <script>  
     async function updateContact(contactId) {  
@@ -102,123 +115,4 @@
             });  
         }  
     }  
-</script>  
-
-<style>  
-    .contact-list-container {  
-        padding: 20px;  
-        max-width: 1200px;  
-        margin: 0 auto;  
-    }  
-
-    .contact-list-header {  
-        text-align: center;  
-        margin-bottom: 30px;  
-    }  
-
-    .contact-list-header h1 {  
-        color: #333;  
-        margin-bottom: 10px;  
-    }  
-
-    .contact-table-wrapper {  
-        background: white;  
-        border-radius: 8px;  
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
-        overflow-x: auto;  
-    }  
-
-    .contact-table {  
-        width: 100%;  
-        border-collapse: collapse;  
-    }  
-
-    .contact-table th,  
-    .contact-table td {  
-        padding: 12px 15px;  
-        text-align: left;  
-        border-bottom: 1px solid #eee;  
-    }  
-
-    .contact-table th {  
-        background-color: #f8f9fa;  
-        font-weight: bold;  
-    }  
-
-    .memo-cell {  
-        max-width: 200px;  
-        white-space: nowrap;  
-        overflow: hidden;  
-        text-overflow: ellipsis;  
-    }  
-
-    .status-badge {  
-        padding: 5px 10px;  
-        border-radius: 15px;  
-        font-size: 0.85em;  
-    }  
-
-    .status-badge.pending {  
-        background-color: #fff3cd;  
-        color: #856404;  
-    }  
-
-    .status-badge.completed {  
-        background-color: #d4edda;  
-        color: #155724;  
-    }  
-
-    .update-btn, .delete-btn {  
-        padding: 6px 12px;  
-        border: none;  
-        border-radius: 4px;  
-        cursor: pointer;  
-        font-size: 0.9em;  
-        transition: background-color 0.2s;  
-    }  
-
-    .update-btn {  
-        background-color: #28a745;  
-        color: white;  
-    }  
-
-    .update-btn:hover {  
-        background-color: #218838;  
-    }  
-
-    .update-btn:disabled {  
-        background-color: #cccccc;  
-        cursor: not-allowed;  
-    }  
-
-    .delete-btn {  
-        background-color: #dc3545;  
-        color: white;  
-    }  
-
-    .delete-btn:hover {  
-        background-color: #c82333;  
-    }  
-
-    .no-data-message {  
-        text-align: center;  
-        padding: 40px;  
-        color: #666;  
-    }  
-
-    @media (max-width: 768px) {  
-        .contact-table-wrapper {  
-            margin: 0 -20px;  
-        }  
-        
-        .contact-table th,  
-        .contact-table td {  
-            padding: 8px 10px;  
-            font-size: 0.9em;  
-        }  
-
-        .memo-cell {  
-            max-width: 150px;  
-        }  
-    }  
-</style>
+</script>

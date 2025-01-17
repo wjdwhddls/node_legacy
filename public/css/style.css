@@ -748,7 +748,7 @@ body::-webkit-scrollbar {
 .contact-table-wrapper {  
     background: white;  
     border-radius: 12px;  
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);  
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  
     overflow: hidden;  
 }  
 
@@ -771,13 +771,13 @@ body::-webkit-scrollbar {
     padding: 16px 20px;  
     border-bottom: 1px solid #e9ecef;  
     color: #495057;  
+    transition: background-color 0.2s;  
 }  
 
 .contact-table tr:hover {  
-    background-color: #f8f9fa;  
+    background-color: #f1f1f1;  
 }  
 
-/* 상태 뱃지 스타일 */  
 .status-badge {  
     padding: 6px 12px;  
     border-radius: 20px;  
@@ -796,7 +796,6 @@ body::-webkit-scrollbar {
     color: #155724;  
 }  
 
-/* 버튼 스타일 */  
 .button-group {  
     display: flex;  
     gap: 8px;  
@@ -809,7 +808,7 @@ body::-webkit-scrollbar {
     font-size: 0.85em;  
     font-weight: 500;  
     cursor: pointer;  
-    transition: all 0.2s;  
+    transition: background-color 0.2s, transform 0.2s;  
 }  
 
 .update-btn {  
@@ -819,6 +818,7 @@ body::-webkit-scrollbar {
 
 .update-btn:hover {  
     background-color: #37b24d;  
+    transform: translateY(-2px);  
 }  
 
 .delete-btn {  
@@ -828,22 +828,24 @@ body::-webkit-scrollbar {
 
 .delete-btn:hover {  
     background-color: #e03131;  
+    transform: translateY(-2px);  
 }  
 
-.processing {  
-    background-color: #fff3cd;  
-    color: #856404;  
-    padding: 4px 8px;  
-    border-radius: 4px;  
-    font-size: 0.85em;  
+.no-data-message {  
+    text-align: center;  
+    padding: 40px;  
+    color: #666;  
 }  
 
-.completed {  
-    background-color: #d4edda;  
-    color: #155724;  
-    padding: 4px 8px;  
-    border-radius: 4px;  
-    font-size: 0.85em;  
+@keyframes fadeIn {  
+    from {  
+        opacity: 0;  
+        transform: translateY(10px);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
 }  
 
 /* 반응형 디자인 */  
@@ -869,54 +871,34 @@ body::-webkit-scrollbar {
     }  
 }  
 
-/* 처리완료, 삭제 버튼 스타일 */  
-.action-button {  
-    padding: 6px 12px;  
-    border: none;  
-    border-radius: 4px;  
-    font-size: 0.85em;  
-    font-weight: 500;  
-    cursor: pointer;  
-    transition: all 0.2s;  
-}  
-
-.process-btn {  
-    background-color: #40c057;  
-    color: white;  
-}  
-
-.delete-btn {  
-    background-color: #fa5252;  
-    color: white;  
-}  
-
-.action-button:hover {  
-    opacity: 0.9;  
-    transform: translateY(-1px);  
-}  
-
-/* 테이블 셀 정렬 */  
 .contact-table td {  
     vertical-align: middle;  
 }  
 
-/* 날짜 칼럼 스타일 */  
 .date-column {  
     color: #666;  
     font-size: 0.9em;  
 }  
 
-/* 이메일 칼럼 스타일 */  
 .email-column {  
     color: #1971c2;  
 }  
 
-/* 내용 칼럼 최대 너비 설정 */  
 .content-column {  
     max-width: 300px;  
     white-space: nowrap;  
     overflow: hidden;  
     text-overflow: ellipsis;  
+}
+@keyframes fadeIn {  
+    from {  
+        opacity: 0;  
+        transform: translateY(10px);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
 }  
 /* 기존 CSS에 추가 */  /*애니매이션 효과*/
 .profile-header {  
